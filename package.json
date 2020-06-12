@@ -1,0 +1,37 @@
+{
+  "name": "reactnd-project-would-you-rather-starter",
+  "version": "1.0.0",
+  "description": "This is the starter code for the final assessment project for Udacity's React & Redux course.",
+  "main": "src/index.js",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.5.0",
+    "react": "^16.2.0",
+    "react-bootstrap": "^1.0.1",
+    "react-dom": "^16.2.0",
+    "react-icons": "^3.10.0",
+    "react-redux": "^7.2.0",
+    "react-redux-loading": "^4.6.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "1.1.1",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krishnakantsirohi/reactnd-project-would-you-rather-starter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krishnakantsirohi/reactnd-project-would-you-rather-starter/issues"
+  },
+  "homepage": "https://github.com/krishnakantsirohi/reactnd-project-would-you-rather-starter#readme"
+}
