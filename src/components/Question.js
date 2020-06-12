@@ -22,23 +22,32 @@ class Question extends Component{
                     <span className='vline'/>
                     <div>
                         <h4>Would you rather...</h4>
-                        <p>...{question[answer].text}...</p>
+                        <p>
+                            ...
+                            {
+                                (typeof answer==='string'&&question[answer].text)
+                            }
+                            {
+                                (typeof answer==='undefined'&&question.optionOne.text)
+                            }
+                        ...</p>
                         <Button>View Poll</Button>
                     </div>
                 </div>
-                {console.log(this.props)}
             </div>
         )
     }
 }
 
 function mapStateToProps({authedUser, questions, users}, {id}) {
+    const adusr = users[authedUser];
     const question = questions[id];
     const author = users[question.author];
+    const answer = adusr.answers[id];
     return {
         author: author,
-        question: questions[id],
-        answer: users[question.author].answers[id]==='undefined'?'':users[question.author].answers[id],
+        question: question,
+        answer: answer,
     }
 }
 
