@@ -64,7 +64,7 @@ body {
     margin-top: 10px;
 }
 
-.question {
+.create-question {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.1s;
     background-color: white;
@@ -76,16 +76,16 @@ body {
     border-radius: 3px;
 }
 
-.question > h2{
+.create-question > h2{
     text-align: center;
     font-weight: bold;
 }
 
-.question > h3{
+.create-question > h3{
     font-weight: bold;
 }
 
-.question > form > p {
+.create-question > form > p {
     text-align: center;
 }
 
@@ -180,7 +180,8 @@ a, a:hover, a:focus{
 
 .vline {
     border-left: 2px solid #e7e9ed;
-    height: 150px;
+    height: 100%;
+    margin-left: 30px;
 }
 
 .hline {
@@ -211,4 +212,35 @@ a, a:hover, a:focus{
 
 .sub-nav a{
     width: 100%;
+}
+
+.question-box{
+    width: 40%;
+    margin: 10px auto;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.1s;
+    border-radius: 5px;
+    background-color: white;
+    height: 220px;
+}
+
+.question-box-author {
+    padding: 0 10px;
+    margin: 0;
+    background: #e9ebee;
+}
+
+.question-box-info {
+    padding-left: 30px;
+    display: flex;
+}
+
+.question-box-info > div {
+    width: 65%;
+    height: 150px;
+    margin: 0 30px 0 0;
+}
+
+h4{
+    font-weight: bold;
 }

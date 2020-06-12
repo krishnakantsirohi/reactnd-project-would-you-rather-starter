@@ -41,7 +41,7 @@ class NewQuestion extends Component{
     render() {
         return (
             <div>
-                <div className='question'>
+                <div className='create-question'>
                     <h2>Create New Question</h2>
                     <span className='ghline'/>
                     <span className='hline'/>
