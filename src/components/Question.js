@@ -1,25 +1,21 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {Redirect, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import {Button} from "react-bootstrap";
 
 class Question extends Component{
 
     handleSubmit = (e) => {
-        console.log(this.props)
         e.preventDefault();
         const {id, answered, history} = this.props;
         if (answered) {
-            return (<Redirect to={{pathname: '/results', state: {id: id}}}/>)
+            history.push({pathname: '/results', state: {id: id}})
         } else {
             history.push({pathname: '/vote', state: {id: id}})
-            console.log('pushed')
-            return (<Redirect to={{pathname: '/vote', state: {id: id}}}/>)
         }
     }
 
     render() {
-        console.log(this.props)
         const {author, question, answer, id} = this.props;
 
         return(

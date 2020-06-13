@@ -1,14 +1,38 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {Button} from "react-bootstrap";
+import {Redirect} from "react-router-dom";
+import {handleSaveQuestionAnswer} from "../actions/users";
 
 class Vote extends Component{
+
+    state = {
+        selected: '',
+        to_home: false,
+    }
+
+    handleChange = (e) => {
+        const val = e.target.value;
+        this.setState(()=>({
+            selected: val,
+        }))
+    }
+
+    handleSubmit = () => {
+        const qid = this.props.location.state.id;
+        const {dispatch} = this.props;
+        const answer = this.state.selected;
+        this.setState(()=>({
+            to_home:true,
+        }))
+        dispatch(handleSaveQuestionAnswer(qid, answer))
+    }
+
     render() {
+        if (this.state.to_home===true){
+            return <Redirect to='/' />
+        }
         const question = this.props.questions[this.props.location.state.id];
         const user = this.props.users[question.author];
-        console.log(this.props)
-        console.log(question)
-        console.log(user)
         return(
             <div className='container'>
             <div className='question-box'>
@@ -24,14 +48,27 @@ class Vote extends Component{
                         className='avatar'
                     />
                     <span className='vline'/>
-                    <form>
+                    <form  onSubmit={this.handleSubmit}>
                         <h4>Would you rather...</h4>
-                        <input type='radio' id='optionOne' name='ans' value={question.optionOne}/>
-                        <label htmlFor='optionOne'> {question.optionOne.text}</label>
+                        <input type='radio' id='optionOne' name='ans'
+                               value='optionOne'
+                               onChange={this.handleChange}
+                               checked={this.state.selected==='optionOne'}
+                        />
+                        <label htmlFor='optionOne'>
+                            {question.optionOne.text}
+                        </label>
                         <br/>
-                        <input type='radio' id='optionTwo' name='ans' value={question.optionTwo}/>
+                        <input type='radio' id='optionTwo' name='ans'
+                               value={'optionTwo'}
+                               onChange={this.handleChange}
+                               checked={this.state.selected==='optionTwo'}/>
                         <label htmlFor='optionTwo'> {question.optionTwo.text}</label>
-                        <Button>View Poll</Button>
+                        <button type='submit'
+                                className='btn btn-primary'
+                        >
+                            Submit
+                        </button>
                     </form>
                 </div>
             </div>
@@ -40,8 +77,9 @@ class Vote extends Component{
     }
 }
 
-function mapStateToProps({questions, users}) {
+function mapStateToProps({authedUser, questions, users}) {
     return{
+        authedUser: authedUser,
         questions: questions,
         users: users,
     }

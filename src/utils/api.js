@@ -17,32 +17,9 @@ function generateUID () {
 }
 
 export function saveQuestion(question){
-    question = {
-        optionOneText: question.optionOne,
-        optionTwoText: question.optionTwo,
-        author: question.authedUser,
-    }
-    const formattedQuestion = formatQuestion(question);
-    return _saveQuestion(formattedQuestion);
+    return _saveQuestion(question)
 }
 
 export function saveQuestionAnswer(questionAnswer) {
     return _saveQuestionAnswer(questionAnswer)
-}
-
-
-export function formatQuestion ({ optionOneText, optionTwoText, author }) {
-    return {
-        id: generateUID(),
-        timestamp: Date.now(),
-        author,
-        optionOne: {
-            votes: [],
-            text: optionOneText,
-        },
-        optionTwo: {
-            votes: [],
-            text: optionTwoText,
-        }
-    }
 }

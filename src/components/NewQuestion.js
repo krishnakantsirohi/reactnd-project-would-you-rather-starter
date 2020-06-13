@@ -44,7 +44,7 @@ class NewQuestion extends Component{
     render() {
         const {to_home} = this.state;
         if (to_home)
-            return <Redirect to='/vote'/>
+            return <Redirect to='/'/>
         return (
             <div>
                 <div className='create-question'>
