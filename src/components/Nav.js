@@ -7,7 +7,9 @@ export default function Nav() {
         <div className='nav'>
             <ul>
                 <li>
-                    <NavLink to='/' exact activeClassName='active'>
+                    <NavLink to='/' exact
+                             activeClassName='active'
+                             >
                         Home
                     </NavLink>
                 </li>

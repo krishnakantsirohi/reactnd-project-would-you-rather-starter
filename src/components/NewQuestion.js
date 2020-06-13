@@ -4,11 +4,13 @@ import '../index.css';
 import {Button, Form} from "react-bootstrap";
 import {handleAddQuestion} from "../actions/questions";
 import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
 
 class NewQuestion extends Component{
     state = {
         optionOne: '',
         optionTwo: '',
+        to_home: false,
     }
 
     handleChangeOption = (e) => {
@@ -33,12 +35,16 @@ class NewQuestion extends Component{
         this.setState(()=>({
             OptionOne: '',
             OptionTwo: '',
+            to_home: true,
         }));
         document.getElementById('OptionOne').value='';
         document.getElementById('OptionTwo').value='';
     }
 
     render() {
+        const {to_home} = this.state;
+        if (to_home)
+            return <Redirect to='/vote'/>
         return (
             <div>
                 <div className='create-question'>
@@ -59,12 +65,4 @@ class NewQuestion extends Component{
     }
 }
 
-function mapStateToProps({authedUser, questions, users}) {
-    return {
-        authedUser: authedUser,
-        questions: questions,
-        users: users,
-    }
-}
-
-export default connect(mapStateToProps)(NewQuestion);
+export default connect()(NewQuestion);

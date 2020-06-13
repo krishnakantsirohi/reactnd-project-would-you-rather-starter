@@ -9,7 +9,7 @@ class Unanswered extends Component{
             <div>
                 {
                     questions.map((id)=>(
-                        <Question key={id} id={id}/>
+                        <Question key={id} id={id} answered={false}/>
                     ))
                 }
             </div>

@@ -1,19 +1,23 @@
-import React, {Component} from "react";
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import React from "react";
+import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import Answered from "./Answered";
-import HomeNav from "./HomeNav";
 import Unanswered from "./Unanswered";
 
-class Home extends Component{
-    render() {
-        return (
-            <Router>
-                <HomeNav/>
-                <Route path='/answered' component={Answered}/>
-                <Route path='/unanswered' component={Unanswered}/>
-            </Router>
-        )
-    }
+export default function Home() {
+    return (
+        <div className='container'>
+            <Tabs id="uncontrolled-tab-example">
+                <TabList>
+                    <Tab>Answered</Tab>
+                    <Tab>Unanswered</Tab>
+                </TabList>
+                <TabPanel>
+                    <Answered />
+                </TabPanel>
+                <TabPanel>
+                    <Unanswered />
+                </TabPanel>
+            </Tabs>
+        </div>
+    );
 }
-
-export default Home;

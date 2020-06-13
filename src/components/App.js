@@ -8,6 +8,8 @@ import Nav from './Nav';
 import LeaderBoard from "./LeaderBoard";
 import '../index.css';
 import Home from "./Home";
+import Vote from "./Vote";
+import Results from "./Results";
 
 class App extends Component{
     componentDidMount() {
@@ -24,9 +26,11 @@ class App extends Component{
                         {this.props.loading === true
                             ? null
                             : <div>
-                                <Route path='/' exact component={Home} />
+                                <Route exact path='/' component={Home}/>
                                 <Route path='/new' component={NewQuestion}/>
                                 <Route path='/leaderboard' component={LeaderBoard}/>
+                                <Route path='/vote' component={Vote}/>
+                                <Route path='/results' component={Results}/>
                             </div>}
                     </div>
                 </Fragment>

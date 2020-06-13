@@ -1,11 +1,27 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
+import {Redirect, withRouter} from 'react-router-dom';
 import {Button} from "react-bootstrap";
 
 class Question extends Component{
 
+    handleSubmit = (e) => {
+        console.log(this.props)
+        e.preventDefault();
+        const {id, answered, history} = this.props;
+        if (answered) {
+            return (<Redirect to={{pathname: '/results', state: {id: id}}}/>)
+        } else {
+            history.push({pathname: '/vote', state: {id: id}})
+            console.log('pushed')
+            return (<Redirect to={{pathname: '/vote', state: {id: id}}}/>)
+        }
+    }
+
     render() {
-        const {author, question, answer} = this.props;
+        console.log(this.props)
+        const {author, question, answer, id} = this.props;
+
         return(
             <div className='question-box'>
                 <div className='question-box-author'>
@@ -31,7 +47,7 @@ class Question extends Component{
                                 (typeof answer==='undefined'&&question.optionOne.text)
                             }
                         ...</p>
-                        <Button>View Poll</Button>
+                        <Button onClick={(e)=>{this.handleSubmit(e)}}>View Poll</Button>
                     </div>
                 </div>
             </div>
@@ -39,7 +55,7 @@ class Question extends Component{
     }
 }
 
-function mapStateToProps({authedUser, questions, users}, {id}) {
+function mapStateToProps({authedUser, questions, users, history}, {id, answered}) {
     const adusr = users[authedUser];
     const question = questions[id];
     const author = users[question.author];
@@ -48,7 +64,8 @@ function mapStateToProps({authedUser, questions, users}, {id}) {
         author: author,
         question: question,
         answer: answer,
+        answered: answered,
     }
 }
 
-export default connect(mapStateToProps)(Question);
+export default withRouter(connect(mapStateToProps)(Question));

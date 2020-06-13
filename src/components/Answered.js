@@ -9,7 +9,7 @@ class Answered extends Component{
             <div>
                 {
                     questions.map((id)=>(
-                        <Question key={id} id={id}/>
+                        <Question key={id} id={id} answered={true}/>
                     ))
                 }
             </div>
